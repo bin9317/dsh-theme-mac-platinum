@@ -19,6 +19,7 @@ html[data-dsh-platinum] body {
     var(--platinum-edge) 0 1px, var(--platinum-glint) 1px 2px, transparent 2px 3px);
   --platinum-face: linear-gradient(180deg, var(--platinum-raised), var(--platinum-panel));
   --platinum-bevel: inset 1px 1px var(--platinum-glint), inset -1px -1px var(--platinum-rule);
+  --dsh-scrollbar-width: 12px;
 }
 
 html[data-dsh-platinum] body[data-ds-dark-theme] {
@@ -65,8 +66,18 @@ html[data-dsh-platinum] {
     }
   }
 
-  /* The flexible title group has room for the ridges after its real controls. */
-  & header[data-window-drag] :has(> nav[aria-label]):has(+ * + [data-conversation-header-corner]) {
+  /* The flexible title group has room for the ridges after its real controls,
+     including blank conversations before the breadcrumb nav mounts. */
+  & header[data-window-drag] :is(
+    :has(> nav[aria-label]):has(+ * + [data-conversation-header-corner]),
+    [data-conversation-header-leading] + :not([data-conversation-header-corner]):has(+ [data-conversation-header-corner], + * + [data-conversation-header-corner]),
+    [data-conversation-header-leading]:has(+ [data-conversation-header-corner])
+  ) {
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 0;
+
     & > nav {
       font-family: Geneva, Chicago, Tahoma, sans-serif;
       font-weight: 700;
@@ -122,12 +133,21 @@ html[data-dsh-platinum] {
       margin-inline: 4px;
       /* The native workspace toolbar otherwise extends into the sidebar gutter. */
       margin-inline-end: 4px !important;
+      border: 1px solid var(--platinum-edge);
       border-radius: 3px 3px 0 0;
-      box-shadow: inset 0 0 0 1px var(--platinum-edge), var(--platinum-bevel);
+      box-shadow: var(--platinum-bevel);
+    }
+
+    & [data-sidebar-list-area] {
+      --dsh-scrollbar-width: 10px;
+      margin-right: 4px;
+      padding-right: 0;
+      scrollbar-gutter: auto;
     }
 
     & [role="tree"] {
-      margin-inline: 4px;
+      --dsh-sidebar-paint-inset: 0px;
+      margin-inline: 4px 0;
       background: var(--platinum-paper);
       border: 1px solid var(--platinum-edge);
       border-top: 0;
@@ -136,6 +156,7 @@ html[data-dsh-platinum] {
 
     & [role="treeitem"] {
       border-radius: 0;
+      padding-inline-end: 11px;
     }
   }
 
@@ -160,6 +181,29 @@ html[data-dsh-platinum] {
   & :is([data-sidebar-toggle], [data-sidebar-opener], [data-slot="sidebar.session.action"] button[aria-label], [data-composer-card] > :last-child button):active:not(:disabled) {
     background: var(--platinum-selection);
     box-shadow: inset 1px 1px var(--platinum-edge), inset -1px -1px var(--platinum-glint);
+  }
+
+  /* Classic Platinum default-button recessed outer ring for the primary send action. */
+  & [data-composer-card] > :last-child > :is(button:last-child, :last-child > button:last-child, :last-child > :last-child > button:last-child):not([role="menuitem"]) {
+    box-shadow: 0 0 0 1px var(--platinum-edge), 0 0 0 2px var(--platinum-panel),
+      0 0 0 3px var(--platinum-rule), 1px 1px 0 3px var(--platinum-glint), var(--platinum-bevel);
+
+    &:not(:disabled) {
+      color: var(--platinum-accent);
+      box-shadow: 0 0 0 1px var(--platinum-action), 0 0 0 2px var(--platinum-panel),
+        0 0 0 3px var(--platinum-edge), 1px 1px 0 3px var(--platinum-glint), var(--platinum-bevel);
+    }
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-hover);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--platinum-selection);
+      box-shadow: 0 0 0 1px var(--platinum-action), 0 0 0 2px var(--platinum-panel),
+        0 0 0 3px var(--platinum-edge), 1px 1px 0 3px var(--platinum-glint),
+        inset 1px 1px var(--platinum-edge), inset -1px -1px var(--platinum-glint);
+    }
   }
 
   & [data-composer-card] {
@@ -395,6 +439,52 @@ html[data-dsh-platinum] {
       background: var(--platinum-face);
       box-shadow: var(--platinum-bevel);
     }
+  }
+
+  & ::-webkit-scrollbar {
+    width: var(--dsh-scrollbar-width, 12px);
+    height: var(--dsh-scrollbar-width, 12px);
+  }
+
+  & ::-webkit-scrollbar-track {
+    background: var(--platinum-panel);
+    box-shadow: inset 1px 1px var(--platinum-edge), inset -1px -1px var(--platinum-glint),
+      inset 0 0 0 1px var(--platinum-rule);
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    min-height: 24px;
+    min-width: 24px;
+    border: 1px solid var(--platinum-edge);
+    border-radius: 0;
+    background: var(--platinum-groove) center / 4px 7px no-repeat, var(--platinum-face);
+    box-shadow: var(--platinum-bevel);
+
+    &:horizontal {
+      background: linear-gradient(90deg, var(--platinum-raised), var(--platinum-panel));
+    }
+
+    &:hover {
+      background: var(--platinum-groove) center / 4px 7px no-repeat, var(--platinum-hover);
+
+      &:horizontal {
+        background: var(--platinum-hover);
+      }
+    }
+
+    &:active {
+      background: var(--platinum-groove) center / 4px 7px no-repeat, var(--platinum-selection);
+      box-shadow: inset 1px 1px var(--platinum-edge), inset -1px -1px var(--platinum-glint);
+
+      &:horizontal {
+        background: var(--platinum-selection);
+      }
+    }
+  }
+
+  & ::-webkit-scrollbar-corner {
+    background: var(--platinum-panel);
+    box-shadow: inset 1px 1px var(--platinum-edge);
   }
 }
 
