@@ -15,7 +15,7 @@ Quit DSH Desktop, run the command and reopen the app. Verified on macOS with
 DSH Desktop `0.2.2-rc.3`.
 
 ```sh
-dsh plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.0
+dsh plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.1
 ```
 
 如果终端找不到 `dsh`，可使用桌面应用内置的 CLI。 If `dsh` is unavailable on
@@ -23,7 +23,7 @@ your PATH, use the macOS app's bundled CLI.
 
 ```sh
 "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
-  plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.0
+  plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.1
 ```
 
 ## 卸载 / Uninstall
@@ -37,4 +37,5 @@ dsh plugin --profile desktop remove dsh-platinum-theme
 ## 构建 / Build
 
 `npm run build` converts `theme.css` and the palette mappings in `build.mjs`
-into the DSH client module. `npm pack` rebuilds and packages the plugin.
+into the DSH client module. Run it before `npm pack`; the generated client is
+committed so GitHub installs work without lifecycle scripts.

@@ -1,6 +1,6 @@
 {
   "name": "dsh-platinum-theme",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Classic Mac OS Platinum theme for DeepSeek Harness Desktop",
   "type": "module",
   "exports": {
@@ -17,8 +17,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "node build.mjs",
-    "prepack": "npm run build"
+    "build": "node build.mjs"
   },
   "dsh": {
     "bundle": {
