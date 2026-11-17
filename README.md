@@ -6,6 +6,10 @@ easy to read. Includes light and dark palettes that follow DSH's appearance.
 
 以 Mac OS 8.1 Platinum 为灵感的 DSH 桌面主题。铂灰窗口、短横纹标题栏、浮雕标签和凹槽输入框覆盖会话、设置和右侧工作区，浅色与深色配色跟随 DSH 外观。
 
+![Platinum light](assets/platinum-light.png)
+
+[Dark preview / 深色预览](assets/platinum-dark.png)
+
 ## 安装 / Install
 
 完全退出 DSH Desktop，运行以下命令，再重新打开。已在 macOS 上的 DSH Desktop
