@@ -111,13 +111,32 @@ html[data-dsh-platinum] {
   }
 
   & [data-sidebar-scrollport] {
-    box-shadow: inset -1px 0 var(--platinum-edge);
-  }
+    & > nav {
+      margin-inline: 4px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--platinum-rule);
+      box-shadow: 0 1px var(--platinum-glint);
+    }
 
-  & [data-sidebar-scrollport] [role="tree"] {
-    background: var(--platinum-paper);
-    border-block: 1px solid var(--platinum-edge);
-    box-shadow: inset 1px 0 var(--platinum-rule);
+    & [data-sidebar-workspace-header] {
+      margin-inline: 4px;
+      /* The native workspace toolbar otherwise extends into the sidebar gutter. */
+      margin-inline-end: 4px !important;
+      border-radius: 3px 3px 0 0;
+      box-shadow: inset 0 0 0 1px var(--platinum-edge), var(--platinum-bevel);
+    }
+
+    & [role="tree"] {
+      margin-inline: 4px;
+      background: var(--platinum-paper);
+      border: 1px solid var(--platinum-edge);
+      border-top: 0;
+      padding-block-end: 3px;
+    }
+
+    & [role="treeitem"] {
+      border-radius: 0;
+    }
   }
 
   & [data-sidebar-scrollport] :is([aria-current="page"], [aria-selected="true"]) {
