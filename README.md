@@ -19,7 +19,7 @@ Quit DSH Desktop, run the command and reopen the app. Verified on macOS with
 DSH Desktop `0.2.2-rc.3`.
 
 ```sh
-dsh plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.1
+dsh plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.2
 ```
 
 如果终端找不到 `dsh`，可使用桌面应用内置的 CLI。 If `dsh` is unavailable on
@@ -27,7 +27,7 @@ your PATH, use the macOS app's bundled CLI.
 
 ```sh
 "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh" \
-  plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.1
+  plugin --profile desktop add github:bin9317/dsh-theme-mac-platinum#v2.2.2
 ```
 
 ## 卸载 / Uninstall

@@ -47,6 +47,13 @@ html[data-dsh-platinum] {
     box-shadow: inset 0 1px var(--platinum-glint);
   }
 
+  /* The macOS sidebar and collapsed controls both use a 52px title band.
+     Blank conversations need the same baseline even without tabs. */
+  &[data-platform="darwin"] header[data-window-drag]:has([data-conversation-header-leading]) {
+    min-height: 52px;
+    align-content: start;
+  }
+
   /* Extend the macOS strip to the tab baseline and keep its toggle at title-row height. */
   &[data-platform="darwin"]:has([data-conversation-tabs]) [data-window-drag]:has(> [data-sidebar-toggle]) {
     --platinum-sidebar-strip-extra: max(0px, calc(var(--platinum-conversation-header-height, 52px) - 52px));
