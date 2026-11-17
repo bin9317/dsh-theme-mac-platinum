@@ -1,0 +1,44 @@
+{
+  "name": "dsh-platinum-theme",
+  "version": "2.2.0",
+  "description": "Classic Mac OS Platinum theme for DeepSeek Harness Desktop",
+  "type": "module",
+  "exports": {
+    ".": "./host.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "host.js",
+    "client.js",
+    "build.mjs",
+    "theme.css",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "prepack": "npm run build"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-theme"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bin9317/dsh-theme-mac-platinum.git"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "dsh-desktop",
+    "theme",
+    "platinum"
+  ]
+}
