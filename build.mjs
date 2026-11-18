@@ -24,8 +24,6 @@ const factory = `const css = ${JSON.stringify(css)};
 const tokens = ${JSON.stringify(tokens, null, 2)};
 
 function alignSidebarHeader(root) {
-  if (root.dataset.platform !== 'darwin') return () => {};
-
   const selector = 'header[data-window-drag]:has([data-conversation-header-leading])';
   const heightProperty = '--platinum-conversation-header-height';
   let header = null;
