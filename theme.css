@@ -243,6 +243,43 @@ html[data-dsh-platinum] {
     border-radius: 3px;
     box-shadow: 0 0 0 1px var(--platinum-edge), var(--platinum-bevel), 2px 2px rgb(0 0 0 / 24%);
   }
+
+  & :is(button[class*="_outline_"], button[class*="secondaryButton"]):not([role="switch"], [role="tab"], [role="menuitem"]) {
+    border: none;
+    border-radius: 3px;
+    background: var(--platinum-face);
+    color: var(--platinum-ink);
+    box-shadow: 0 0 0 1px var(--platinum-edge), var(--platinum-bevel);
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-hover);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--platinum-selection);
+      box-shadow: 0 0 0 1px var(--platinum-edge), inset 1px 1px var(--platinum-edge), inset -1px -1px var(--platinum-glint);
+    }
+  }
+
+  & :is(button[class*="_primary_"], button[class*="primaryButton"]):not([class*="dangerButton"], [role="switch"], [role="tab"], [role="menuitem"]) {
+    border: none;
+    border-radius: 3px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--platinum-button) 88%, #fff), var(--platinum-button));
+    color: var(--platinum-on-accent);
+    box-shadow: 0 0 0 1px var(--platinum-action), 0 0 0 2px var(--platinum-panel),
+      0 0 0 3px var(--platinum-edge), 1px 1px 0 3px var(--platinum-glint),
+      inset 1px 1px rgb(255 255 255 / 26%), inset -1px -1px rgb(0 0 0 / 24%);
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-accent-hover);
+    }
+
+    &:active:not(:disabled) {
+      background: var(--platinum-accent-hover);
+      box-shadow: 0 0 0 1px var(--platinum-action), 0 0 0 2px var(--platinum-panel),
+        0 0 0 3px var(--platinum-edge), inset 1px 1px rgb(0 0 0 / 35%), inset -1px -1px rgb(255 255 255 / 18%);
+    }
+  }
 }
 
 html[data-dsh-platinum] [data-shortcut-modal="settings"] {
@@ -344,6 +381,59 @@ html[data-dsh-platinum] [data-shortcut-modal="settings"] {
 
   & section:has([data-avatar-status]) a + a {
     color: var(--platinum-on-accent);
+  }
+
+  & button[class*="addButton"] {
+    border: 1px dashed var(--platinum-edge);
+    border-radius: 3px;
+    background: var(--platinum-paper);
+    box-shadow: inset 1px 1px var(--platinum-rule);
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-hover);
+    }
+  }
+
+  & button[class*="_selector"],
+  & > :last-child button[class*="_button"] {
+    border: none;
+    border-radius: 3px;
+    background: var(--platinum-face);
+    color: var(--platinum-ink);
+    box-shadow: 0 0 0 1px var(--platinum-edge), var(--platinum-bevel);
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-hover);
+    }
+
+    &:is(:active, [aria-expanded="true"]):not(:disabled) {
+      background: var(--platinum-selection);
+      box-shadow: 0 0 0 1px var(--platinum-edge), inset 1px 1px var(--platinum-edge), inset -1px -1px var(--platinum-glint);
+    }
+  }
+
+  & [class*="_stepper"] {
+    border-radius: 2px;
+    background: var(--platinum-composer);
+    box-shadow: inset 1px 1px var(--platinum-rule), 0 0 0 1px var(--platinum-edge);
+  }
+
+  & button[class*="_arrow"] {
+    border-radius: 2px;
+    background: var(--platinum-face);
+    box-shadow: 0 0 0 1px var(--platinum-edge), var(--platinum-bevel);
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-hover);
+    }
+  }
+
+  & button[class*="_expander"] {
+    border-radius: 3px;
+
+    &:hover:not(:disabled) {
+      background: var(--platinum-hover);
+    }
   }
 }
 
